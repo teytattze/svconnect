@@ -1,4 +1,5 @@
-export { AdminUseCaseDto } from './dto/AdminUseCaseDto';
+export { DIToken } from './constant/DIToken';
+
 export { LecturerUseCaseDto } from './dto/LecturerUseCaseDto';
 export { StudentUseCaseDto } from './dto/StudentUseCaseDto';
 export { UserUseCaseDto } from './dto/UserUseCaseDto';

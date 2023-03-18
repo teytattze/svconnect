@@ -23,7 +23,7 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     const newUser = this.createNewUser(payload);
-    await this.userRepository.create(newUser);
+    await this.userRepository.save(newUser);
 
     return UserUseCaseDto.fromEntity(newUser);
   }
@@ -37,7 +37,6 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
     firstName,
     lastName,
     email,
-    emailVerified,
     password,
     roles,
   }: CreateUserPort): UserEntity {
@@ -45,7 +44,6 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
       firstName,
       lastName,
       email,
-      emailVerified,
       password,
       roles,
     });
