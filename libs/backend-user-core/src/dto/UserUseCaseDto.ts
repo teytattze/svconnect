@@ -2,7 +2,7 @@ import { BaseUseCaseDto, Nullable } from '@svconnect/backend-common-core';
 import { Exclude, Expose, Type, plainToClass } from 'class-transformer';
 
 import { UserEntity } from '../entity/UserEntity';
-import { AdminUseCaseDto } from './AdminUseCaseDto';
+import { UserRole } from '../enum/UserRole';
 import { LecturerUseCaseDto } from './LecturerUseCaseDto';
 import { StudentUseCaseDto } from './StudentUseCaseDto';
 
@@ -14,13 +14,12 @@ export class UserUseCaseDto extends BaseUseCaseDto {
   lastName: string;
   @Expose()
   email: string;
+  @Expose()
+  emailVerified: boolean;
   @Exclude()
   password: string;
   @Expose()
-  role: string;
-  @Expose()
-  @Type(() => AdminUseCaseDto)
-  admin: Nullable<AdminUseCaseDto>;
+  roles: UserRole[];
   @Expose()
   @Type(() => LecturerUseCaseDto)
   lecturer: Nullable<LecturerUseCaseDto>;
