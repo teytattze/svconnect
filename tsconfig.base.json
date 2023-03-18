@@ -14,7 +14,27 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@svconnect/backend-common-application": [
+        "libs/backend-common-application/src/index.ts"
+      ],
+      "@svconnect/backend-common-core": [
+        "libs/backend-common-core/src/index.ts"
+      ],
+      "@svconnect/backend-common-infrastructure": [
+        "libs/backend-common-infrastructure/src/index.ts"
+      ],
+      "@svconnect/backend-project-core": [
+        "libs/backend-project-core/src/index.ts"
+      ],
+      "@svconnect/backend-speciality-core": [
+        "libs/backend-speciality-core/src/index.ts"
+      ],
+      "@svconnect/backend-user-core": ["libs/backend-user-core/src/index.ts"],
+      "@svconnect/backend-user-infrastructure": [
+        "libs/backend-user-infrastructure/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

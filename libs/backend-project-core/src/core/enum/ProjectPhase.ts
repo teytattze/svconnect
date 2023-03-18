@@ -1,0 +1,6 @@
+export enum ProjectPhase {
+  PLANNING = 'PLANNING',
+  DEVELOPMENT = 'DEVELOPMENT',
+  TESTING = 'TESTING',
+  COMPLETED = 'COMPLETED',
+}
