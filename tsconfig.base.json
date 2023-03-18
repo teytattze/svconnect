@@ -30,6 +30,9 @@
       "@svconnect/backend-speciality-core": [
         "libs/backend-speciality-core/src/index.ts"
       ],
+      "@svconnect/backend-user-application": [
+        "libs/backend-user-application/src/index.ts"
+      ],
       "@svconnect/backend-user-core": ["libs/backend-user-core/src/index.ts"],
       "@svconnect/backend-user-infrastructure": [
         "libs/backend-user-infrastructure/src/index.ts"
