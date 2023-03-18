@@ -1,8 +1,8 @@
+import { Nullable } from '@svconnect/backend-common-core';
 import {
-  Nullable,
   TypeOrmBaseEntity,
   TypeOrmBaseEntityPayload,
-} from '@svconnect/backend-common-core';
+} from '@svconnect/backend-common-infrastructure';
 import { UserRole } from '@svconnect/backend-user-core';
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 

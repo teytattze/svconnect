@@ -1,7 +1,7 @@
 import {
   TypeOrmBaseEntity,
   TypeOrmBaseEntityPayload,
-} from '@svconnect/backend-common-core';
+} from '@svconnect/backend-common-infrastructure';
 import { Column, Entity } from 'typeorm';
 
 type TypeOrmLecturerEntityPayload = TypeOrmBaseEntityPayload & {
