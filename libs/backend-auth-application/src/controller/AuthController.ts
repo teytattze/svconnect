@@ -1,5 +1,5 @@
 import { Controller, Inject, Post, Request, UseGuards } from '@nestjs/common';
-import { DIToken, GetAccessTokenUseCase } from '@svconnect/backend-auth-core';
+import { AuthToken, GetAccessTokenUseCase } from '@svconnect/backend-auth-core';
 import {
   LocalAuthGuard,
   RequestWithUser,
@@ -8,7 +8,7 @@ import {
 @Controller('auth')
 export class AuthController {
   constructor(
-    @Inject(DIToken.GET_ACCESS_TOKEN_USE_CASE)
+    @Inject(AuthToken.GET_ACCESS_TOKEN_USE_CASE)
     private readonly getAccessTokenUseCase: GetAccessTokenUseCase,
   ) {}
 
