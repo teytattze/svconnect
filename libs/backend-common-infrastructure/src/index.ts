@@ -1,4 +1,1 @@
-export {
-  TypeOrmBaseEntityPayload,
-  TypeOrmBaseEntity,
-} from './TypeOrmBaseEntity';
+export { TypeOrmBaseEntity } from './TypeOrmBaseEntity';
