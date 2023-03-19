@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
-import { DIToken } from '../../constant/DIToken';
+import { UserToken } from '../../constant/UserToken';
 import { UserUseCaseDto } from '../../dto/UserUseCaseDto';
 import { ValidateUserEmailAndPasswordUseCase } from '../../usecase/ValidateUserEmailAndPasswordUseCase';
 import { ValidateUserEmailAndPasswordCommand } from '../impl/ValidateUserEmailAndPasswordCommand';
@@ -11,7 +11,7 @@ export class ValidateUserEmailAndPasswordHandler
   implements ICommandHandler<ValidateUserEmailAndPasswordCommand>
 {
   constructor(
-    @Inject(DIToken.VALIDATE_USER_EMAIL_AND_PASSWORD_USE_CASE)
+    @Inject(UserToken.VALIDATE_USER_EMAIL_AND_PASSWORD_USE_CASE)
     private readonly validateUserEmailAndPasswordUseCase: ValidateUserEmailAndPasswordUseCase,
   ) {}
 

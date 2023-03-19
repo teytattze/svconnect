@@ -1,5 +1,5 @@
 import { Module, Provider } from '@nestjs/common';
-import { ConfigModule, ConfigType } from '@nestjs/config';
+import { ConfigType } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
@@ -7,8 +7,8 @@ import {
   dbConfigFactory,
 } from '@svconnect/backend-common-application';
 import {
-  DIToken,
   UserRepositoryPort,
+  UserToken,
   ValidateUserEmailAndPasswordHandler,
   ValidateUserEmailAndPasswordUseCaseImpl,
 } from '@svconnect/backend-user-core';
@@ -23,17 +23,17 @@ const commandHandlers = [ValidateUserEmailAndPasswordHandler];
 
 const repositoryProviders: Provider[] = [
   {
-    provide: DIToken.USER_REPOSITORY,
+    provide: UserToken.REPOSITORY,
     useClass: UserRepositoryAdapter,
   },
 ];
 
 const useCaseProviders: Provider[] = [
   {
-    provide: DIToken.VALIDATE_USER_EMAIL_AND_PASSWORD_USE_CASE,
+    provide: UserToken.VALIDATE_USER_EMAIL_AND_PASSWORD_USE_CASE,
     useFactory: (userRepository: UserRepositoryPort) =>
       new ValidateUserEmailAndPasswordUseCaseImpl(userRepository),
-    inject: [DIToken.USER_REPOSITORY],
+    inject: [UserToken.REPOSITORY],
   },
 ];
 

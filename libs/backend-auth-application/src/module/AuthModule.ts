@@ -2,7 +2,7 @@ import { Module, Provider } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import {
   AccessTokenConfigPort,
-  DIToken,
+  AuthToken,
   GetAccessTokenUseCaseImpl,
 } from '@svconnect/backend-auth-core';
 import { AccessTokenConfigAdapter } from '@svconnect/backend-auth-infrastructure';
@@ -12,17 +12,17 @@ import { AuthController } from '../controller/AuthController';
 
 const repositoryProviders: Provider[] = [
   {
-    provide: DIToken.ACCESS_TOKEN_CONFIG,
+    provide: AuthToken.ACCESS_TOKEN_CONFIG,
     useClass: AccessTokenConfigAdapter,
   },
 ];
 
 const useCaseProviders: Provider[] = [
   {
-    provide: DIToken.GET_ACCESS_TOKEN_USE_CASE,
+    provide: AuthToken.GET_ACCESS_TOKEN_USE_CASE,
     useFactory: (accessTokenConfig: AccessTokenConfigPort) =>
       new GetAccessTokenUseCaseImpl(accessTokenConfig),
-    inject: [DIToken.ACCESS_TOKEN_CONFIG],
+    inject: [AuthToken.ACCESS_TOKEN_CONFIG],
   },
 ];
 

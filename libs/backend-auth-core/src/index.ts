@@ -1,4 +1,4 @@
-export { DIToken } from './constant/DIToken';
+export { AuthToken } from './constant/AuthToken';
 
 export { AccessTokenConfigPort } from './type/AccessTokenConfigPort';
 export { GetAccessTokenUseCasePort } from './type/GetAccessTokenUseCasePort';

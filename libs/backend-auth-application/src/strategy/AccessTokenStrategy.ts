@@ -2,7 +2,7 @@ import { Inject } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import {
   AccessTokenConfigPort,
-  DIToken,
+  AuthToken,
   JwtPayloadWithUser,
 } from '@svconnect/backend-auth-core';
 import { UserUseCaseDto } from '@svconnect/backend-user-core';
@@ -11,7 +11,7 @@ import { Strategy } from 'passport-local';
 
 export class AccessTokenStrategy extends PassportStrategy(Strategy) {
   constructor(
-    @Inject(DIToken.ACCESS_TOKEN_CONFIG)
+    @Inject(AuthToken.ACCESS_TOKEN_CONFIG)
     private readonly accessTokenConfig: AccessTokenConfigPort,
   ) {
     super({

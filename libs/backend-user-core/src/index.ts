@@ -1,7 +1,7 @@
 export { ValidateUserEmailAndPasswordHandler } from './command/handler/ValidateUserEmailAndPasswordHandler';
 export { ValidateUserEmailAndPasswordCommand } from './command/impl/ValidateUserEmailAndPasswordCommand';
 
-export { DIToken } from './constant/DIToken';
+export { UserToken } from './constant/UserToken';
 
 export { LecturerUseCaseDto } from './dto/LecturerUseCaseDto';
 export { StudentUseCaseDto } from './dto/StudentUseCaseDto';
