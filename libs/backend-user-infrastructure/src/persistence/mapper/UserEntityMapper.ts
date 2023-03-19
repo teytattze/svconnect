@@ -7,23 +7,25 @@ import { StudentEntityMapper } from './StudentEntityMapper';
 
 export class UserEntityMapper {
   static toTypeOrmEntity(domainEntity: UserEntity): TypeOrmUserEntity {
-    return new TypeOrmUserEntity({
-      id: domainEntity.id.value,
-      firstName: domainEntity.firstName,
-      lastName: domainEntity.lastName,
-      email: domainEntity.email,
-      emailVerified: domainEntity.emailVerified,
-      password: domainEntity.password,
-      roles: domainEntity.roles,
-      lecturer: isNotNull(domainEntity.lecturer)
-        ? LecturerEntityMapper.toTypeOrmEntity(domainEntity.lecturer)
-        : null,
-      student: isNotNull(domainEntity.student)
-        ? StudentEntityMapper.toTypeOrmEntity(domainEntity.student)
-        : null,
-      createdAt: domainEntity.createdAt,
-      updatedAt: domainEntity.updatedAt,
-    });
+    const typeOrmEntity = new TypeOrmUserEntity();
+
+    typeOrmEntity.id = domainEntity.id.value;
+    typeOrmEntity.firstName = domainEntity.firstName;
+    typeOrmEntity.lastName = domainEntity.lastName;
+    typeOrmEntity.email = domainEntity.email;
+    typeOrmEntity.emailVerified = domainEntity.emailVerified;
+    typeOrmEntity.password = domainEntity.password;
+    typeOrmEntity.roles = domainEntity.roles;
+    typeOrmEntity.lecturer = isNotNull(domainEntity.lecturer)
+      ? LecturerEntityMapper.toTypeOrmEntity(domainEntity.lecturer)
+      : null;
+    typeOrmEntity.student = isNotNull(domainEntity.student)
+      ? StudentEntityMapper.toTypeOrmEntity(domainEntity.student)
+      : null;
+    typeOrmEntity.createdAt = domainEntity.createdAt;
+    typeOrmEntity.updatedAt = domainEntity.updatedAt;
+
+    return typeOrmEntity;
   }
 
   static toDomainEntity(typeOrmEntity: TypeOrmUserEntity): UserEntity {

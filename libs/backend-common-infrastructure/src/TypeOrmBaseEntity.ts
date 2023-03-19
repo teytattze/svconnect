@@ -1,22 +1,10 @@
 import { Column, PrimaryColumn } from 'typeorm';
 
-export type TypeOrmBaseEntityPayload = {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export class TypeOrmBaseEntity {
+export abstract class TypeOrmBaseEntity {
   @PrimaryColumn()
   id: string;
-  @Column()
+  @Column('date')
   createdAt: Date;
-  @Column()
+  @Column('date')
   updatedAt: Date;
-
-  constructor({ id, createdAt, updatedAt }: TypeOrmBaseEntityPayload) {
-    this.id = id;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-  }
 }

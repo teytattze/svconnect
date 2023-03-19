@@ -5,12 +5,14 @@ import { TypeOrmStudentEntity } from '../entity/TypeOrmStudentEntity';
 
 export class StudentEntityMapper {
   static toTypeOrmEntity(domainEntity: StudentEntity): TypeOrmStudentEntity {
-    return new TypeOrmStudentEntity({
-      id: domainEntity.id.value,
-      projectIds: domainEntity.projectIds.map((id) => id.value),
-      createdAt: domainEntity.createdAt,
-      updatedAt: domainEntity.updatedAt,
-    });
+    const typeOrmEntity = new TypeOrmStudentEntity();
+
+    typeOrmEntity.id = domainEntity.id.value;
+    typeOrmEntity.projectIds = domainEntity.projectIds.map((id) => id.value);
+    typeOrmEntity.createdAt = domainEntity.createdAt;
+    typeOrmEntity.updatedAt = domainEntity.updatedAt;
+
+    return typeOrmEntity;
   }
 
   static toDomainEntity(typeOrmEntity: TypeOrmStudentEntity): StudentEntity {

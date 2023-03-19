@@ -5,15 +5,18 @@ import { TypeOrmLecturerEntity } from '../entity/TypeOrmLecturerEntity';
 
 export class LecturerEntityMapper {
   static toTypeOrmEntity(domainEntity: LecturerEntity): TypeOrmLecturerEntity {
-    return new TypeOrmLecturerEntity({
-      id: domainEntity.id.value,
-      specialityIds: domainEntity.specialityIds.map((id) => id.value),
-      supervisingProjectIds: domainEntity.supervisingProjectIds.map(
-        (id) => id.value,
-      ),
-      createdAt: domainEntity.createdAt,
-      updatedAt: domainEntity.updatedAt,
-    });
+    const typeOrmEntity = new TypeOrmLecturerEntity();
+
+    typeOrmEntity.id = domainEntity.id.value;
+    typeOrmEntity.specialityIds = domainEntity.specialityIds.map(
+      (id) => id.value,
+    );
+    typeOrmEntity.supervisingProjectIds =
+      domainEntity.supervisingProjectIds.map((id) => id.value);
+    typeOrmEntity.createdAt = domainEntity.createdAt;
+    typeOrmEntity.updatedAt = domainEntity.updatedAt;
+
+    return typeOrmEntity;
   }
 
   static toDomainEntity(typeOrmEntity: TypeOrmLecturerEntity): LecturerEntity {

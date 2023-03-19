@@ -1,24 +1,10 @@
 import { Nullable } from '@svconnect/backend-common-core';
-import {
-  TypeOrmBaseEntity,
-  TypeOrmBaseEntityPayload,
-} from '@svconnect/backend-common-infrastructure';
+import { TypeOrmBaseEntity } from '@svconnect/backend-common-infrastructure';
 import { UserRole } from '@svconnect/backend-user-core';
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 
 import { TypeOrmLecturerEntity } from './TypeOrmLecturerEntity';
 import { TypeOrmStudentEntity } from './TypeOrmStudentEntity';
-
-type TypeOrmUserEntityPayload = TypeOrmBaseEntityPayload & {
-  firstName: string;
-  lastName: string;
-  email: string;
-  emailVerified: boolean;
-  password: string;
-  roles: UserRole[];
-  lecturer: Nullable<TypeOrmLecturerEntity>;
-  student: Nullable<TypeOrmStudentEntity>;
-};
 
 @Entity('users')
 export class TypeOrmUserEntity extends TypeOrmBaseEntity {
@@ -49,26 +35,4 @@ export class TypeOrmUserEntity extends TypeOrmBaseEntity {
   })
   @JoinColumn()
   student: Nullable<TypeOrmStudentEntity>;
-
-  constructor({
-    firstName,
-    lastName,
-    email,
-    emailVerified,
-    password,
-    roles,
-    lecturer,
-    student,
-    ...baseEntityPayload
-  }: TypeOrmUserEntityPayload) {
-    super(baseEntityPayload);
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.emailVerified = emailVerified;
-    this.password = password;
-    this.roles = roles;
-    this.lecturer = lecturer;
-    this.student = student;
-  }
 }
