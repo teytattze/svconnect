@@ -1,3 +1,6 @@
+export { ValidateUserEmailAndPasswordHandler } from './command/handler/ValidateUserEmailAndPasswordHandler';
+export { ValidateUserEmailAndPasswordCommand } from './command/impl/ValidateUserEmailAndPasswordCommand';
+
 export { DIToken } from './constant/DIToken';
 
 export { LecturerUseCaseDto } from './dto/LecturerUseCaseDto';
@@ -14,8 +17,13 @@ export { EmailAlreadyExistedException } from './exception/EmailAlreadyExistedExc
 
 export { CreateUserPort } from './type/CreateUserPort';
 export { UserRepositoryPort } from './type/UserRepositoryPort';
+export { ValidateUserEmailAndPasswordPort } from './type/ValidateUserEmailAndPasswordPort';
 
 export {
   CreateUserUseCase,
   CreateUserUseCaseImpl,
 } from './usecase/CreateUserUseCase';
+export {
+  ValidateUserEmailAndPasswordUseCase,
+  ValidateUserEmailAndPasswordUseCaseImpl,
+} from './usecase/ValidateUserEmailAndPasswordUseCase';

@@ -13,8 +13,18 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@svconnect/backend-auth-application": [
+        "libs/backend-auth-application/src/index.ts"
+      ],
+      "@svconnect/backend-auth-core": ["libs/backend-auth-core/src/index.ts"],
+      "@svconnect/backend-auth-infrastructure": [
+        "libs/backend-auth-infrastructure/src/index.ts"
+      ],
       "@svconnect/backend-common-application": [
         "libs/backend-common-application/src/index.ts"
       ],

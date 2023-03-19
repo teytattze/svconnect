@@ -17,7 +17,7 @@ export class StudentEntityMapper {
     return new StudentEntity({
       id: IDFactory.create({ type: IDType.UUID, value: typeOrmEntity.id }),
       projectIds: typeOrmEntity.projectIds.map((id) =>
-        IDFactory.create({ type: IDType.UUID, value: typeOrmEntity.id }),
+        IDFactory.create({ type: IDType.UUID, value: id }),
       ),
       createdAt: typeOrmEntity.createdAt,
       updatedAt: typeOrmEntity.updatedAt,

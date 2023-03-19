@@ -1,6 +1,7 @@
 import {
   BaseEntity,
   BaseEntityPayload,
+  Bcrypt,
   Nullable,
 } from '@svconnect/backend-common-core';
 
@@ -16,8 +17,8 @@ export type UserEntityPayload = BaseEntityPayload & {
   password: string;
   roles?: UserRole[];
 
-  lecturer?: LecturerEntity;
-  student?: StudentEntity;
+  lecturer?: Nullable<LecturerEntity>;
+  student?: Nullable<StudentEntity>;
 };
 
 export class UserEntity extends BaseEntity {
@@ -25,8 +26,11 @@ export class UserEntity extends BaseEntity {
   private readonly _lastName: string;
   private readonly _email: string;
   private readonly _emailVerified: boolean;
-  private readonly _password: string;
+  private _password: string;
   private readonly _roles: UserRole[];
+
+  private _lecturer: Nullable<LecturerEntity>;
+  private _student: Nullable<StudentEntity>;
 
   constructor({
     firstName,
@@ -51,8 +55,6 @@ export class UserEntity extends BaseEntity {
     this._student = student ?? null;
   }
 
-  private _lecturer: Nullable<LecturerEntity>;
-
   get lecturer(): Nullable<LecturerEntity> {
     return this._lecturer;
   }
@@ -60,8 +62,6 @@ export class UserEntity extends BaseEntity {
   set lecturer(value: Nullable<LecturerEntity>) {
     this._lecturer = value;
   }
-
-  private _student: Nullable<StudentEntity>;
 
   get student(): Nullable<StudentEntity> {
     return this._student;
@@ -105,5 +105,13 @@ export class UserEntity extends BaseEntity {
 
   isStudent(): boolean {
     return this._roles.includes(UserRole.STUDENT);
+  }
+
+  async encryptPassword(): Promise<void> {
+    this._password = await Bcrypt.hash(this._password);
+  }
+
+  async verifyPassword(password: string): Promise<boolean> {
+    return Bcrypt.compare(password, this._password);
   }
 }

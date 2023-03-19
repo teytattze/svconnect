@@ -42,13 +42,13 @@ export class TypeOrmUserEntity extends TypeOrmBaseEntity {
     nullable: true,
   })
   @JoinColumn()
-  lecturer: TypeOrmLecturerEntity;
+  lecturer: Nullable<TypeOrmLecturerEntity>;
   @OneToOne(() => TypeOrmStudentEntity, {
     cascade: true,
     nullable: true,
   })
   @JoinColumn()
-  student: TypeOrmStudentEntity;
+  student: Nullable<TypeOrmStudentEntity>;
 
   constructor({
     firstName,

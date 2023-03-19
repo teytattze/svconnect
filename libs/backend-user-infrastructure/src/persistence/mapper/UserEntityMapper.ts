@@ -1,4 +1,4 @@
-import { IDFactory, IDType } from '@svconnect/backend-common-core';
+import { IDFactory, IDType, isNotNull } from '@svconnect/backend-common-core';
 import { UserEntity } from '@svconnect/backend-user-core';
 
 import { TypeOrmUserEntity } from '../entity/TypeOrmUserEntity';
@@ -15,8 +15,12 @@ export class UserEntityMapper {
       emailVerified: domainEntity.emailVerified,
       password: domainEntity.password,
       roles: domainEntity.roles,
-      lecturer: LecturerEntityMapper.toTypeOrmEntity(domainEntity.lecturer),
-      student: StudentEntityMapper.toTypeOrmEntity(domainEntity.student),
+      lecturer: isNotNull(domainEntity.lecturer)
+        ? LecturerEntityMapper.toTypeOrmEntity(domainEntity.lecturer)
+        : null,
+      student: isNotNull(domainEntity.student)
+        ? StudentEntityMapper.toTypeOrmEntity(domainEntity.student)
+        : null,
       createdAt: domainEntity.createdAt,
       updatedAt: domainEntity.updatedAt,
     });
@@ -31,8 +35,12 @@ export class UserEntityMapper {
       emailVerified: typeOrmEntity.emailVerified,
       password: typeOrmEntity.password,
       roles: typeOrmEntity.roles,
-      lecturer: LecturerEntityMapper.toDomainEntity(typeOrmEntity.lecturer),
-      student: StudentEntityMapper.toDomainEntity(typeOrmEntity.student),
+      lecturer: isNotNull(typeOrmEntity.lecturer)
+        ? LecturerEntityMapper.toDomainEntity(typeOrmEntity.lecturer)
+        : null,
+      student: isNotNull(typeOrmEntity.student)
+        ? StudentEntityMapper.toDomainEntity(typeOrmEntity.student)
+        : null,
       createdAt: typeOrmEntity.createdAt,
       updatedAt: typeOrmEntity.updatedAt,
     });

@@ -23,6 +23,7 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     const newUser = this.createNewUser(payload);
+    await newUser.encryptPassword();
     await this.userRepository.save(newUser);
 
     return UserUseCaseDto.fromEntity(newUser);

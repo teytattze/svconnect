@@ -1,5 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Nullable } from '@svconnect/backend-common-core';
+import { Nullable, isNull } from '@svconnect/backend-common-core';
 import { UserEntity, UserRepositoryPort } from '@svconnect/backend-user-core';
 import { Repository } from 'typeorm';
 
@@ -14,7 +14,9 @@ export class UserRepositoryAdapter implements UserRepositoryPort {
 
   async findByEmail(email: string): Promise<Nullable<UserEntity>> {
     const typeOrmUser = await this.repository.findOneBy({ email });
-    return UserEntityMapper.toDomainEntity(typeOrmUser);
+    return isNull(typeOrmUser)
+      ? null
+      : UserEntityMapper.toDomainEntity(typeOrmUser);
   }
 
   async save(user: UserEntity): Promise<void> {

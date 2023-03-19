@@ -1,3 +1,5 @@
+import { Optional } from '@svconnect/backend-common-core';
+
 export type HttpResponsePayload<T> = {
   statusCode: number;
   errorCode?: string;
@@ -44,10 +46,10 @@ export class HttpResponse<T = unknown> {
     statusCode,
     errorCode,
   }: HttpResponsePayload<T>) {
-    this._statusCode = statusCode ?? null;
+    this._statusCode = statusCode;
     this._errorCode = errorCode;
     this._data = data;
-    this._message = message ?? null;
+    this._message = message;
     this._timestamp = Date.now();
   }
 
@@ -55,15 +57,15 @@ export class HttpResponse<T = unknown> {
     return this._statusCode;
   }
 
-  get errorCode(): string {
+  get errorCode(): Optional<string> {
     return this._errorCode;
   }
 
-  get message(): string {
+  get message(): Optional<string> {
     return this._message;
   }
 
-  get data(): T {
+  get data(): Optional<T> {
     return this._data;
   }
 

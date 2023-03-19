@@ -16,12 +16,16 @@ export { MYRCurrencyMoney } from './value-object/money/MYRCurrencyMoney';
 export { CurrencyCode, CurrencySymbol } from './value-object/money/type';
 
 export { BaseEntityPayload, BaseEntity } from './BaseEntity';
+export { Bcrypt } from './Bcrypt';
 export {
   ClassValidationDetails,
   ClassValidationErrors,
   ClassValidator,
 } from './ClassValidator';
 export { ExceptionPayload, Exception } from './Exception';
+
+export { booleanStringSchema } from './schema';
+
 export {
   Optional,
   Nullable,
